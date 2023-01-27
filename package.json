@@ -1,0 +1,12 @@
+{
+  "name": "flare-ftso-price-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:TowoLabs/flare-ftso-price-api.git",
+  "author": "Towo Labs AB",
+  "license": "MIT",
+  "dependencies": {
+    "bignumber.js": "9.1.1",
+    "web3": "1.8.1"
+  }
+}
