@@ -1,4 +1,3 @@
-const BigNumber = require("bignumber.js");
 const Web3 = require("web3");
 const ftsoAbi = require('./ftsoAbi.json');
 const multicallAbi = require('./multicallAbi.json');
@@ -58,9 +57,8 @@ exports.fetchPrices = (req, res) => {
 
       allFtsos.forEach((ftso, index) => {
         const hexPrice = result.returnData[index].slice(0, 66);
-        const rawPrice = new BigNumber(hexPrice);
-        const price = rawPrice.shiftedBy(-ftso.decimals).toFixed();
-        determinedPrices.push({ price: price, symbol: ftso.symbol });
+        const price = parseInt(hexPrice, 16)/(10**ftso.decimals);
+        determinedPrices.push({ price: price.toString(), symbol: ftso.symbol });
       });
       
       res.status(200).send(determinedPrices);
